@@ -10,7 +10,7 @@ const app = async (): Promise<UserConfigExport> => {
   /**
    * Removes everything before the last
    * @octocat/library-repo -> library-repo
-   * vite-component-library-template -> vite-component-library-template
+   * react-ionicon -> react-ionicon
    */
   const formattedName = name.match(/[^/]+$/)?.[0] ?? name
 
