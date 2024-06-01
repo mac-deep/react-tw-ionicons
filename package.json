@@ -1,26 +1,27 @@
 {
-  "name": "react-ionicon",
+  "name": "react-tw-ionicons",
   "private": false,
   "version": "0.0.1",
-  "main": "./dist/react-ionicon.umd.js",
-  "module": "./dist/react-ionicon.es.js",
+  "main": "./dist/react-tw-ionicons.umd.js",
+  "module": "./dist/react-tw-ionicons.es.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/react-ionicon.es.js",
-      "require": "./dist/react-ionicon.umd.js"
+      "import": "./dist/react-tw-ionicons.es.js",
+      "require": "./dist/react-tw-ionicons.umd.js"
     },
     "./dist/style.css": "./dist/style.css"
   },
   "engines": {
-    "node": "18"
+    "node": ">=16"
   },
   "scripts": {
     "dev": "storybook dev -p 6006",
     "build": "storybook build",
     "build:lib": "yarn run build:icon && tsc && vite build",
-    "build:icon": "ts-node ./src/scripts/generateComponents.ts && yarn run prettier",
+    "build:only-lib": "tsc && vite build",
+    "build:icon": "ts-node ./generator/generateComponents.ts && yarn run prettier",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix",
     "prettier": "prettier --write \"src/**/*.{ts,tsx,js,mdx}\"",
     "test": "vitest",
@@ -71,6 +72,7 @@
     "storybook": "7.2.2",
     "string-width": "^6.1.0",
     "tailwindcss": "3.3.3",
+    "terser": "^5.19.4",
     "typescript": "5.1.6",
     "vite": "4.4.9",
     "vite-plugin-dts": "3.5.1",

@@ -4,7 +4,7 @@ import { defineConfig } from 'vitest/config'
 import dts from 'vite-plugin-dts'
 import tailwindcss from 'tailwindcss'
 import { UserConfigExport } from 'vite'
-import { name } from './package.json'
+import { name, version } from './package.json'
 
 const app = async (): Promise<UserConfigExport> => {
   /**
@@ -27,23 +27,32 @@ const app = async (): Promise<UserConfigExport> => {
       },
     },
     build: {
+      outDir: 'dist',
       lib: {
-        entry: path.resolve(__dirname, 'src/lib/index.ts'),
+        entry: path.resolve(__dirname, 'src', 'index.ts'),
         name: formattedName,
         formats: ['es', 'umd'],
         fileName: (format) => `${formattedName}.${format}.js`,
       },
       rollupOptions: {
         external: ['react', 'react/jsx-runtime', 'react-dom', 'tailwindcss'],
+
         output: {
+          dir: path.resolve(__dirname, 'dist'),
+
           globals: {
             react: 'React',
             'react/jsx-runtime': 'react/jsx-runtime',
             'react-dom': 'ReactDOM',
             tailwindcss: 'tailwindcss',
           },
+          banner: `/* ${formattedName} ${version} */`,
+          footer: `/* follow me on Twitter! @mac-deep */`,
         },
       },
+      reportCompressedSize: true,
+      minify: 'terser',
+      target: ['es2015'],
     },
     test: {
       globals: true,
