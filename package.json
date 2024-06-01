@@ -1,7 +1,7 @@
 {
   "name": "react-tw-ionicons",
   "private": false,
-  "version": "0.0.1",
+  "version": "2.0.4",
   "main": "./dist/react-tw-ionicons.umd.js",
   "module": "./dist/react-tw-ionicons.es.js",
   "types": "./dist/index.d.ts",
